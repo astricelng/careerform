@@ -12,5 +12,12 @@
         "psr-4": {
             "Astricelng\\Careerform\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Astricelng\\Careerform\\Providers\\CareerFormServiceProvider"
+            ]
+        }
     }
 }
