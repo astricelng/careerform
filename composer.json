@@ -1,0 +1,16 @@
+{
+    "name": "astricelng/careerform",
+    "description": "A career form package for laravel",
+    "authors": [
+        {
+            "name": "Astrid Narvaez",
+            "email": "anarvaez@gluttonomy.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Astricelng\\Careerform\\": "src/"
+        }
+    }
+}
