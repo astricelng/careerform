@@ -1,0 +1,124 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: first_name
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'First Name'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: last_name
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Surname
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: email
+            field:
+              input_type: email
+              antlers: false
+              type: text
+              display: Email
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: phone_number
+            field:
+              input_type: tel
+              antlers: false
+              type: text
+              display: Phone
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: job_position
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Job position'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: resume
+            field:
+              max_files: 1
+              mode: grid
+              container: files
+              folder: career
+              restrict: true
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: Resume
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: hear_from_us
+            field:
+              options:
+                friends_family: Friends/Family
+                'employee referral': 'Employee Referral'
+                indeed_linkedin: Indeed/LinkedIn
+                'social media': 'Social Media'
+                'search engine': 'Search Engine'
+                press: Press
+                other: Other
+              taggable: false
+              push_tags: false
+              placeholder: 'Select an option'
+              multiple: false
+              max_items: 1
+              clearable: false
+              searchable: true
+              cast_booleans: false
+              type: select
+              display: 'How did you hear from us?'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: other_hear
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Other hear'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              if:
+                hear_from_us: 'equals other'
