@@ -8,7 +8,7 @@ use Statamic\Facades\Collection;
 
 Route::get('career', function(){
 
-    $files = AssetContainer::find('files');
+    /*$files = AssetContainer::find('files');
     $files->assetFolder('career')->save();
 
     $careerForm = app('files')->get(__DIR__ . '/../templates/blueprints/forms/career.yaml');
@@ -19,9 +19,14 @@ Route::get('career', function(){
         ->handle('career')
         ->honeypot('fax')
         ->title('Career')
-        ->save();
+        ->save();*/
+
 
     $careerCollection = app('files')->get(__DIR__ . '/../templates/blueprints/collections/career.yaml');
+
+    if (!file_exists(base_path('resources/blueprints/collections/careers/')))
+        mkdir(base_path('resources/blueprints/collections/careers/'), 0770, true);
+
     app('files')->put(base_path('resources/blueprints/collections/careers/career.yaml'), $careerCollection);
 
     $collection = Collection::make('careers');
@@ -34,7 +39,7 @@ Route::get('career', function(){
         ->sortDirection('asc')
         ->save();
 
-    return 'Hello from the career form package 3';
+    return 'Hello from the career form package 4';
 });
 
 
