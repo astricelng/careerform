@@ -11,7 +11,7 @@ Route::get('career', function(){
     $files = AssetContainer::find('files');
     $files->assetFolder('career')->save();
 
-    $careerForm = app('files')->get(__DIR__ . '/../templates/forms/career.yaml');
+    $careerForm = app('files')->get(__DIR__ . '/../templates/blueprints/forms/career.yaml');
     app('files')->put(base_path('resources/blueprints/forms/career.yaml'), $careerForm);
 
     $form = Form::make()->handle('career');
@@ -20,6 +20,9 @@ Route::get('career', function(){
         ->honeypot('fax')
         ->title('Career')
         ->save();
+
+    $careerCollection = app('files')->get(__DIR__ . '/../templates/blueprints/collections/career.yaml');
+    app('files')->put(base_path('resources/blueprints/collections/careers/career.yaml'), $careerCollection);
 
     $collection = Collection::make('careers');
     $collection
@@ -31,7 +34,7 @@ Route::get('career', function(){
         ->sortDirection('asc')
         ->save();
 
-    return 'Hello from the career form package 2';
+    return 'Hello from the career form package 3';
 });
 
 
