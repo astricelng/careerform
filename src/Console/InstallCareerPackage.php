@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Statamic\Facades\AssetContainer;
 use Statamic\Facades\Form;
 use Statamic\Facades\Collection;
+use Statamic\Facades\Entry;
 
 class InstallCareerPackage extends Command
 {
@@ -32,6 +33,18 @@ class InstallCareerPackage extends Command
         $this->info('Creating career collection...');
         $this->createCareerCollection();
 
+        if (!file_exists(base_path('resources/blueprints/collections/pages/page.yaml'))) {
+            $this->info('Copying page collection blueprint');
+            $this->copyPageCollectionBlueprint();
+        }
+
+        if (!Collection::handleExists('pages')) {
+            $this->info('Creating pages collection...');
+            $this->createPagesCollection();
+        }
+
+        $this->info('Creating career page...');
+        $this->createCareerPage();
 
         $this->info('Installed CareerPackage');
     }
@@ -88,6 +101,49 @@ class InstallCareerPackage extends Command
             ->revisionsEnabled(false)
             ->sortDirection('asc')
             ->save();
+    }
+
+    private function copyPageCollectionBlueprint(){
+
+        $pageBlueprint = app('files')->get(__DIR__ . '/../templates/blueprints/collections/page.yaml');
+
+        // If collections directory doesn't exist, create it
+        if (!file_exists(base_path('resources/blueprints/collections/pages')))
+            mkdir(base_path('resources/blueprints/collections/pages'), 0770, true);
+
+            app('files')->put(base_path('resources/blueprints/collections/pages/page.yaml'), $pageBlueprint);
+    }
+
+    private function createPagesCollection(){
+
+        $pages = Collection::make('pages');
+
+        $pages
+            ->title('Pages')
+            ->template('default')
+            ->layout('layout')
+            ->revisionsEnabled(false)
+            ->routes('{parent_uri}/{slug}')
+            ->sortDirection('asc')
+            ->structureContents(array('root' => true))
+            ->save();
+    }
+
+    private function createCareerPage(){
+
+        $pages = Collection::find('pages');
+        $careerPage = $pages->queryEntries()->where('slug','career')->first();
+
+        if (!$careerPage){
+            $entry = Entry::make()->collection('pages')->slug('career');
+
+            $entry
+                ->published(true) // or false for a draft
+                ->locale('default') // the site handle. defaults to the default site.
+                ->blueprint('page') // set entry blueprint
+                ->data(['title' => 'Career', 'template' => 'career'])
+                ->save();
+        }
     }
 
 }
