@@ -54,16 +54,11 @@ tabs:
               hide_display: false
           -
             handle: job_position
-            field:
-              input_type: text
-              antlers: false
-              type: text
+            field: common.entry
+            config:
               display: 'Job position'
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
+              collections:
+                - careers
           -
             handle: resume
             field:

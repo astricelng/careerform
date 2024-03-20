@@ -16,6 +16,7 @@ class CareerFormServiceProvider extends ServiceProvider {
                 InstallCareerPackage::class,
             ]);
         }
+
     }
 
     public function register()

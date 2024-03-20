@@ -34,7 +34,7 @@ class InstallCareerPackage extends Command
         $this->createCareerCollection();
 
         if (!file_exists(base_path('resources/blueprints/collections/pages/page.yaml'))) {
-            $this->info('Copying page collection blueprint');
+            $this->info('Copying collection page blueprint');
             $this->copyPageCollectionBlueprint();
         }
 
@@ -45,6 +45,9 @@ class InstallCareerPackage extends Command
 
         $this->info('Creating career page...');
         $this->createCareerPage();
+
+        $this->info('Copying career page...');
+        $this->copyCareerPage();
 
         $this->info('Installed CareerPackage');
     }
@@ -144,6 +147,13 @@ class InstallCareerPackage extends Command
                 ->data(['title' => 'Career', 'template' => 'career'])
                 ->save();
         }
+    }
+
+    private function copyCareerPage(){
+
+        $careerPage = app('files')->get(__DIR__ . '/../templates/views/career.blade.php');
+
+        app('files')->put(base_path('resources/views/career.blade.php'), $careerPage);
     }
 
 }
