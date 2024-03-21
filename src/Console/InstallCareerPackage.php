@@ -151,8 +151,11 @@ class InstallCareerPackage extends Command
 
     private function copyCareerPage(){
 
-        $careerPage = app('files')->get(__DIR__ . '/../templates/views/career.blade.php');
+        $careerPageForm = app('files')->get(__DIR__ . '/../templates/views/career/form.blade.php');
+        app('files')->put(base_path('resources/views/layout/partials/career/form.blade.php'), $careerPageForm);
 
+
+        $careerPage = app('files')->get(__DIR__ . '/../templates/views/career.blade.php');
         app('files')->put(base_path('resources/views/career.blade.php'), $careerPage);
     }
 
