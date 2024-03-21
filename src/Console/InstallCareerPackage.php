@@ -158,6 +158,11 @@ class InstallCareerPackage extends Command
 
         app('files')->put(base_path('resources/views/layout/partials/career/form.blade.php'), $careerPageForm);
 
+
+        $careerPageList = app('files')->get(__DIR__ . '/../../resources/js/components/CareerList.vue');
+        app('files')->put(base_path('resources/js/components/partials/CareerList.vue'), $careerPageList);
+
+
         $careerPage = app('files')->get(__DIR__ . '/../templates/views/career.blade.php');
         app('files')->put(base_path('resources/views/career.blade.php'), $careerPage);
     }
