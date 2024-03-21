@@ -1,9 +1,9 @@
 <template>
-    el componente del package
+    <slot></slot>
 </template>
 
 
-<script setup>
+<script >
 export default {
     // ... definición del componente
 }

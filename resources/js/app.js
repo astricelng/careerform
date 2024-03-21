@@ -8,6 +8,7 @@ const app = createApp({
     },
 });
 
-import TestC from "./components/test.vue";
+import Career from "./components/Career.vue";
 
-app.component("TestC", TestC);
+app.component("Career", Career);
+app.mount("#appp");
