@@ -1,27 +1,24 @@
+@php
+    use Statamic\Facades\Form;
+
+    $builder['form'] = Form::find('career');
+
+@endphp
+
 @extends('layout')
 
 @section('body')
-    <div id="career">
-        <career-list @emitbutton="pushButton"></career-list>
+    <career v-slot="slotProps">
+        <div id="career">
+            <career-list @item-selected="slotProps.careerSelected"></career-list>
 
-        <main class="py-12 md:py-16 lg:py-24 stack-12 md:stack-16 lg:stack-24" id="content">
-            @include('layout.partials.career.form')
-        </main>
-    </div>
-
-
-    <script>
-        var career = new Vue({
-            el: '#career',
-            data: {
-                pButton: null,
-            },
-            methods: {
-                pushButton: function(value){
-                    this.pButton = value;
-                    alert('aqui '+this.pButton)
-                }
-            }
-        });
-    </script>
+            <career-form :career="slotProps.career">
+                <main class="py-12 md:py-16 lg:py-24 stack-12 md:stack-16 lg:stack-24" id="content">
+                    @if (isset($builder['form']))
+                        @includeIf('page_builder._form')
+                    @endif
+                </main>
+            </career-form>
+        </div>
+    </career>
 @endsection

@@ -151,20 +151,27 @@ class InstallCareerPackage extends Command
 
     private function copyCareerPage(){
 
-        $careerPageForm = app('files')->get(__DIR__ . '/../templates/views/career/form.blade.php');
+        $careerComponent = app('files')->get(__DIR__ . '/../../resources/js/components/Career.vue');
+        app('files')->put(base_path('resources/js/components/Career.vue'), $careerComponent);
 
-        if (!file_exists(base_path('resources/views/layout/partials/career')))
-            mkdir(base_path('resources/views/layout/partials/career'), 0770, true);
+        if (!file_exists(base_path('resources/js/components/partials')))
+            mkdir(base_path('resources/js/components/partials'), 0770, true);
 
-        app('files')->put(base_path('resources/views/layout/partials/career/form.blade.php'), $careerPageForm);
+        $careerListComponent = app('files')->get(__DIR__ . '/../../resources/js/components/CareerList.vue');
+        app('files')->put(base_path('resources/js/components/partials/CareerList.vue'), $careerListComponent);
 
+        $careerFormComponent = app('files')->get(__DIR__ . '/../../resources/js/components/CareerForm.vue');
+        app('files')->put(base_path('resources/js/components/partials/CareerForm.vue'), $careerFormComponent);
 
-        $careerPageList = app('files')->get(__DIR__ . '/../../resources/js/components/CareerList.vue');
-        app('files')->put(base_path('resources/js/components/partials/CareerList.vue'), $careerPageList);
+        $careerShowComponent = app('files')->get(__DIR__ . '/../../resources/js/components/CareerShowMore.vue');
+        app('files')->put(base_path('resources/js/components/partials/CareerShowMore.vue'), $careerShowComponent);
 
 
         $careerPage = app('files')->get(__DIR__ . '/../templates/views/career.blade.php');
         app('files')->put(base_path('resources/views/career.blade.php'), $careerPage);
+
+        $careerPage = app('files')->get(__DIR__ . '/../templates/controllers/CareerController.php');
+        app('files')->put(base_path('app/Http/Controllers/CareerController.php'), $careerPage);
     }
 
 }
