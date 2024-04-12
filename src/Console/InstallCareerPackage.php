@@ -157,21 +157,21 @@ class InstallCareerPackage extends Command
         if (!file_exists(base_path('resources/js/components/partials')))
             mkdir(base_path('resources/js/components/partials'), 0770, true);
 
-        $careerListComponent = app('files')->get(__DIR__ . '/../../resources/js/components/CareerList.vue');
-        app('files')->put(base_path('resources/js/components/partials/CareerList.vue'), $careerListComponent);
+        /*$careerListComponent = app('files')->get(__DIR__ . '/../../resources/js/components/CareerList.vue');
+        app('files')->put(base_path('resources/js/components/partials/CareerList.vue'), $careerListComponent);*/
 
         $careerFormComponent = app('files')->get(__DIR__ . '/../../resources/js/components/CareerForm.vue');
         app('files')->put(base_path('resources/js/components/partials/CareerForm.vue'), $careerFormComponent);
 
-        $careerShowComponent = app('files')->get(__DIR__ . '/../../resources/js/components/CareerShowMore.vue');
-        app('files')->put(base_path('resources/js/components/partials/CareerShowMore.vue'), $careerShowComponent);
+        /*$careerShowComponent = app('files')->get(__DIR__ . '/../../resources/js/components/CareerShowMore.vue');
+        app('files')->put(base_path('resources/js/components/partials/CareerShowMore.vue'), $careerShowComponent);*/
 
 
         $careerPage = app('files')->get(__DIR__ . '/../templates/views/career.blade.php');
         app('files')->put(base_path('resources/views/career.blade.php'), $careerPage);
 
-        $careerPage = app('files')->get(__DIR__ . '/../templates/controllers/CareerController.php');
-        app('files')->put(base_path('app/Http/Controllers/CareerController.php'), $careerPage);
+        /*$careerPage = app('files')->get(__DIR__ . '/../templates/controllers/CareerController.php');
+        app('files')->put(base_path('app/Http/Controllers/CareerController.php'), $careerPage);*/
     }
 
 }
