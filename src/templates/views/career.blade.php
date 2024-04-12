@@ -20,7 +20,7 @@
     <career v-slot="slotProps">
         <div id="career">
 
-            <List @item-selected="slotProps.careerSelected">
+            <LPList @item-selected="slotProps.careerSelected">
                 <template #items="{showMore, selectItem}">
                     <ul
                         class="grid grid-cols-1 gap-x-5 gap-y-7 md:gap-y-10 md:grid-cols-2 xl:grid-cols-3 xl:justify-items-stretch"
@@ -113,7 +113,7 @@
                         </button>
                     </div>
                 </template>
-            </List>
+            </LPList>
 
             <career-form :career="slotProps.career">
                 <main class="py-12 md:py-16 lg:py-24 stack-12 md:stack-16 lg:stack-24" id="content">
