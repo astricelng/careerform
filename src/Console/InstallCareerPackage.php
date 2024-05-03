@@ -144,7 +144,7 @@ class InstallCareerPackage extends Command
                 ->published(true) // or false for a draft
                 ->locale('default') // the site handle. defaults to the default site.
                 ->blueprint('page') // set entry blueprint
-                ->data(['title' => 'Career', 'template' => 'career'])
+                ->data(['title' => 'Career', 'template' => 'career', 'seo_noindex' => false, 'seo_nofollow' => false, 'seo_canonical_type' => 'entry', 'sitemap_change_frequency' => 'weekly'])
                 ->save();
         }
     }
